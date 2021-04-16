@@ -15,8 +15,8 @@ var log = logrus.New()
 
 func Init() {
 	dsn := os.Getenv("SENTRY_DSN")
-	prod := os.Getenv("LOG_PROD")
-	if len(dsn) == 0 || prod != "dev" {
+
+	if len(dsn) == 0 {
 		return
 	}
 
