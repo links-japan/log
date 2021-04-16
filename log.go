@@ -6,15 +6,17 @@ import (
 	"github.com/evalphobia/logrus_sentry"
 	"github.com/getsentry/sentry-go"
 	"github.com/sirupsen/logrus"
+	"os"
 	"runtime"
 )
 
 // Create a new instance of the logger. You can have any number of instances.
 var log = logrus.New()
 
-func Init(dsn string, prod bool) {
-
-	if len(dsn) == 0 || !prod {
+func Init() {
+	dsn := os.Getenv("SENTRY_DSN")
+	prod := os.Getenv("LOG_PROD")
+	if len(dsn) == 0 || prod != "dev" {
 		return
 	}
 
