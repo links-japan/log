@@ -40,8 +40,20 @@ func Init() {
 	}
 }
 
-func Info(msg string) {
-	log.Info(msg)
+func Info(args ...interface{}) {
+	log.Info(args...)
+}
+
+func Fatal(args ...interface{}) {
+	log.Fatal(args...)
+}
+
+func WithField(key string, value interface{}) *logrus.Entry {
+	return log.WithField(key, value)
+}
+
+func Printf(format string, args ...interface{}) {
+	log.Printf(format, args...)
 }
 
 func Infof(format string, args ...interface{}) {
